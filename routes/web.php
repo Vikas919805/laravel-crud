@@ -1,23 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
-//use App\Http\Controllers\usercontroller;
 
-//Route::get ('/user',[usercontroller::class,'aboutuser']);
-//Route::view('/abhi','welcome');
-//Route::view('/about','about');
- //Route::view('user','home');
-//Route::post('vikas',[UserNmae::class,'username']);
+ 
 
-//Route::controller(StudentController::class)->group(function(){
+ Route::get('product',[ProductController::class,'index'])->name('product.index');
+   
+ Route::get('create',[ProductController::class,'create'])->name('product.create');
 
-//Route::middleware('nikku')->group(function(){
+ Route::post('product',[ProductController::class,'store'])->name('product.store');
 
-   //Route::get('Student',[HomeController::class,'user']);
-   Route::post ('user',[UserController::class,'upload']);
-  Route ::view ('user','user');
+ Route::get('product/{product}/edit',[ProductController::class,'edit'])->name('product.edit');
 
-  Route ::view ('login','login');
-   //Route::view('user','user');
+ Route::put('product/{id}/',[ProductController::class,'update'])->name('product.update');
+
+// Route::delete('product/{id}/',[ProductController::class,'destroy'])->name('product.destroy');
+Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
